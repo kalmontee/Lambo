@@ -5,26 +5,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Quicksand&display=swap" rel="stylesheet">
     <title>Giphy API</title>
 
     <style>
-
+        body {
+            background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
+            background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
+        }
+        
+        aside {
+            float: right;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #fff;
+            font-size: 40px;
+            font-family: 'Nanum Gothic', sans-serif;
+        }
+        
+        form {
+            font-family: 'Quicksand', sans-serif;
+            /* width: 100%; */
+            margin: 60px;
+            font-size: 20px;
+        }
+        
+        label {
+            color: #fff;
+        }
+        
+        input {
+            margin: 10px;
+            /* padding: 5px; */
+        }
+        
+        #topics-input {
+            font-size: 18px;
+        }
+        
+        #add-topics {
+            border: none;
+            color: #0F2027;
+            padding: 10px 10px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: rgb(247, 215, 36);
+        }
     </style>
 </head>
 
 <body>
-    <div id="topics-view">
+    <section>
+        <h1>Giftastic</h1>
 
-    </div>
+        <div id="topics-view"></div>
 
-    <form id="topics-form">
-        <label for="topics-input">Search for a animal, car, or minion</label>
+        <aside>
+            <form id="topics-form">
+                <label for="topics-input">Search for an animal, car, or minion</label>
+                <br>
 
-        <input type="text" id="topics-input">
+                <input type="text" id="topics-input">
+                <br>
 
-        <input type="
-        submit" id="add-topics" value="Add a topic">
-    </form>
+                <input type="submit" id="add-topics" value="Submit" id="input-button">
+            </form>
+        </aside>
+    </section>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
