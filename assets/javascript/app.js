@@ -38,7 +38,7 @@ function displayTopicsInfo() {
             var inputImage = $('<img>');
 
             // src attribute of the image to a property
-            inputImage.attr("src", results[i].images.fixed_height.url);
+            inputImage.attr("src", results[i].images.fixed_height_still.url);
 
             // append paragraph and image tag to inputDiv
             // inputDiv.append(pTitle);
@@ -74,6 +74,7 @@ $('#add-topics').on('click', function(event) {
     event.preventDefault();
 
     var topics_input = $('#topics-input').val().trim();
+    // topics_input.val('');
 
     topics.push(topics_input);
     console.log(topics);
