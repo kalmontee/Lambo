@@ -86,12 +86,12 @@ p {
 }
 
 .inputDiv {
-    width: 30%;
+    /* width: 30%; */
     float: left;
 }
 
 .inputDiv img {
     margin: 10px;
-    width: 90%;
+    /* width: 90%; */
     height: 230px;
 }
