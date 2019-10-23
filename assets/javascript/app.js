@@ -1,5 +1,9 @@
 var topics = ['animals', 'cars', 'minions'];
 
+$(document).on('click', '.topics', displayTopicsInfo);
+
+renderButtons();
+
 function displayTopicsInfo() {
 
     var topic = $(this).attr("data-type");
@@ -66,7 +70,3 @@ $('#add-topics').on('click', function(event) {
     renderButtons();
 
 });
-
-$(document).on('click', '.topics', displayTopicsInfo);
-
-renderButtons();
