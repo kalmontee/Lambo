@@ -5,6 +5,13 @@ body {
 
 aside {
     float: right;
+    height: 50%;
+}
+
+article {
+    display: flex;
+    justify-content: space-between;
+    /* width: 100%; */
 }
 
 h1 {
@@ -44,6 +51,10 @@ input {
     background-color: rgb(247, 215, 36);
 }
 
+#button-topics {
+    margin-bottom: 3em;
+}
+
 button {
     border: none;
     color: #0F2027;
@@ -51,7 +62,7 @@ button {
     font-size: 18px;
     font-weight: bold;
     background-color: rgb(247, 215, 36);
-    margin: 0 10px;
+    margin: 5px 10px;
     border-radius: 10px;
 }
 
@@ -70,7 +81,15 @@ p {
 }
 
 #topics-view {
-    margin: 10px;
+    /* margin: 10px; */
+    width: 70%;
 }
 
-.inputDiv {}
+.inputDiv {
+    width: 30%;
+    float: left;
+}
+
+.inputDiv img {
+    margin: 10px;
+}
