@@ -2,7 +2,7 @@ var topics = ['animals', 'cars', 'minions'];
 
 function displayTopicsInfo() {
 
-    var topic = $(this).attr("data-name");
+    var topic = $(this).attr("data-type");
     var APIKey = "IcqtslR9hjOS6kk8EC1CldDCskqZoWYT";
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=" + APIKey + "&limit=10" + "&rating=g";
 
@@ -15,15 +15,33 @@ function displayTopicsInfo() {
         console.log(response);
         $('#topics-view').text(JSON.stringify(Response));
 
-        // var topicsDiv = $("<div class='topics'>");
+        var results = response.data;
 
-        // var rating = response.rating;
+        for (var i = 0; i < results.length; i++) {
+            // create a new Div to store data
+            var inputDiv = $('<div>');
+            inputDiv.addClass('inputDiv');
 
-        // var pOne = $("<p>").text('Rating ' + rating);
+            // Include the rating in a paragraph tag
+            var rating = results[i].rating;
+            var p = $('<p>').text('Rating: ' + rating);
+
+            // storing gif images in a img tag
+            var inputImage = $('<img>');
+
+            // src attribute of the image to a property
+            inputImage.attr("src", results[i].images.fixed_height.url);
+
+            // append paragraph and image tag to inputDiv
+            inputDiv.append(p)
+            inputDiv.append(inputImage);
+
+            $("#topics-view").append(inputDiv);
+        }
 
     });
 }
-displayTopicsInfo();
+// displayTopicsInfo();
 
 function renderButtons() {
     $('#topics-view').empty();
@@ -31,12 +49,13 @@ function renderButtons() {
     for (var i = 0; i < topics.length; i++) {
         var button = $("<button>");
         button.addClass('topics');
-        button.attr("data-name", topics[i]);
+        button.attr("data-type", topics[i]);
         button.text(topics[i]);
         $('#topics-view').append(button);
     }
 }
-$('#input-button').on('click', function(event) {
+
+$('#add-topics').on('click', function(event) {
     event.preventDefault();
 
     var topics_input = $('#topics-input').val().trim();
