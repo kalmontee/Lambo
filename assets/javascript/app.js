@@ -38,10 +38,10 @@ function displayTopicsInfo() {
             var inputImage = $('<img>');
 
             // src attribute of the image to a property
-            inputImage.attr("src", results[i].images.fixed_height_downsampled.url);
+            inputImage.attr("src", results[i].images.fixed_height.url);
 
             // append paragraph and image tag to inputDiv
-            inputDiv.append(pTitle);
+            // inputDiv.append(pTitle);
             inputDiv.append(p)
             inputDiv.append(inputImage);
 
