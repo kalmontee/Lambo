@@ -1,6 +1,10 @@
 var topics = ['Animals', 'Celebrities', 'Minions', 'Movies', "Parties", "Yacht"];
 
+// Don't touch this
 $(document).on('click', '.topics', displayTopicsInfo);
+
+// Touch this
+// $(document).on('click', '.topics', removeTopics);
 
 renderButtons();
 
@@ -94,7 +98,24 @@ function renderButtons() {
         // display the buttons topics
         button.text(topics[i]);
         $('#button-topics').append(button);
+
+        var icon = $("<a><i class='fas fa-trash-alt'></i></a>");
+
+        icon.addClass('icon');
+
+        icon.attr("data-type", topics[i]);
+
+        $('#button-topics').append(icon);
+
     }
+
+    // $(icon).on('click', function() {
+    //     $('.topics').remove()
+    //         // $("data-type", button).remove();
+    //         // $('.icon').remove();
+
+    //     console.log("it works");
+    // })
 }
 
 $('#add-topics').on('click', function(event) {
