@@ -1,4 +1,4 @@
-var topics = ['Animals', 'Celebrities', 'Minions', 'Movies', "Parties", "Yacht"];
+var topics = ['Animals', 'Celebrities', 'Minions', 'Movies', "Athletes", "Laugh"];
 
 // Don't touch this
 $(document).on('click', '.topics', displayTopicsInfo);
@@ -122,6 +122,9 @@ $('#add-topics').on('click', function(event) {
     event.preventDefault();
 
     var topics_input = $('#topics-input').val().trim();
+
+    // This will clear the previous input text field
+    $("#topics-input").val('');
 
     // Push whatever topic to topic inputs. Will be set as a button
     topics.push(topics_input);
