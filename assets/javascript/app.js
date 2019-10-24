@@ -1,4 +1,4 @@
-var topics = ['animals', 'cars', 'minions'];
+var topics = ['Animals', 'Celebrities', 'Minions', 'Movies', "Parties", "Yacht"];
 
 $(document).on('click', '.topics', displayTopicsInfo);
 
