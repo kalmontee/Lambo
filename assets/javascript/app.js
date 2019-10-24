@@ -6,38 +6,43 @@ renderButtons();
 
 function displayTopicsInfo() {
 
-    var topic = $(this).attr("data-type");
+    var name = $(this).attr("data-type");
     var APIKey = "IcqtslR9hjOS6kk8EC1CldDCskqZoWYT";
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=" + APIKey + "&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + name + "&api_key=" + APIKey + "&limit=10";
 
     $.ajax({
         url: queryURL,
         method: "GET"
 
     }).then(function(response) {
+        // Testing purposes only
         console.log(queryURL);
         console.log(response);
         $('#topics-view').text(JSON.stringify(Response));
 
         var results = response.data;
 
+        // Loop through response.data to retrieve info
         for (var i = 0; i < results.length; i++) {
             // create a new Div to store data
             var inputDiv = $('<div>');
+
+            // add a class to the inputDiv
             inputDiv.addClass('inputDiv');
 
             // Include the title of the gif image
-            var title = results[i].title;
-            var pTitle = $('<p>').text('Title: ' + title);
+            var title = $('<p>').text('Title: ' + results[i].title);
 
             // Include the rating in a paragraph tag
-            var rating = results[i].rating;
-            var p = $('<p>').text('Rating: ' + rating);
+            var rating = $('<p>').text('Rating: ' + results[i].rating);
 
-            // inputImage.addClass('gif');
+            // Get the still URL gif img
             var imgURL = response.data[i].images['480w_still'].url
+
+            // Get the animate URL gif img
             var animateURL = response.data[i].images['fixed_height'].url
 
+            // Target the img attr data-state, data-still, and data-animate to pause and play gif img
             var inputImage = $('<img>').attr({
                 'data-state': 'still',
                 'src': imgURL,
@@ -47,12 +52,13 @@ function displayTopicsInfo() {
             });
 
             // append paragraph and image tag to inputDiv
-            inputDiv.append(pTitle);
-            inputDiv.append(p);
+            inputDiv.append(title);
+            inputDiv.append(rating);
             inputDiv.append(inputImage);
             $("#topics-view").append(inputDiv);
         }
 
+        // Set the click events gif img to display still and animate.
         $('.gif').on('click', function() {
             var state = $(this).attr('data-state');
 
@@ -64,12 +70,9 @@ function displayTopicsInfo() {
                 $(this).attr("src", $(this).attr("data-still"));
                 $(this).attr("data-state", "still");
             }
-            console.log(state);
         });
     });
 }
-// displayTopicsInfo();
-
 
 // Here is where buttons will be created and added
 function renderButtons() {
@@ -96,11 +99,8 @@ $('#add-topics').on('click', function(event) {
 
     var topics_input = $('#topics-input').val().trim();
 
+    // Push whatever topic to topic inputs. Will be set as a button
     topics.push(topics_input);
-    console.log(topics);
-
-    // $('.gif').empty();
-    // console.log(inputDiv)
 
     renderButtons();
 });
