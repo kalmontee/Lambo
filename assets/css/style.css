@@ -27,13 +27,14 @@ h1 {
 
 form {
     font-family: 'Quicksand', sans-serif;
-    /* width: 100%; */
+    width: 80%;
     margin: 60px;
     font-size: 20px;
 }
 
 label {
     color: #fff;
+    font-size: 23px;
 }
 
 input {
