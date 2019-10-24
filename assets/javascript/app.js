@@ -34,23 +34,44 @@ function displayTopicsInfo() {
             var rating = results[i].rating;
             var p = $('<p>').text('Rating: ' + rating);
 
-            // storing gif images in a img tag
-            var inputImage = $('<img>');
+            // inputImage.addClass('gif');
+            var imgURL = response.data[i].images['480w_still'].url
+            var animateURL = response.data[i].images['fixed_height'].url
 
-            // src attribute of the image to a property
-            inputImage.attr("src", results[i].images.fixed_height_still.url);
+            var inputImage = $('<img>').attr({
+                'data-state': 'still',
+                'src': imgURL,
+                'data-still': imgURL,
+                'data-animate': animateURL,
+                'class': 'gif'
+            });
 
             // append paragraph and image tag to inputDiv
-            // inputDiv.append(pTitle);
-            inputDiv.append(p)
+            inputDiv.append(pTitle);
+            inputDiv.append(p);
             inputDiv.append(inputImage);
-
             $("#topics-view").append(inputDiv);
         }
+
+        $('.gif').on('click', function() {
+            var state = $(this).attr('data-state');
+
+            if (state === 'still') {
+                $(this).attr("src", $(this).attr("data-animate"));
+                $(this).attr("data-state", "animate");
+
+            } else {
+                $(this).attr("src", $(this).attr("data-still"));
+                $(this).attr("data-state", "still");
+            }
+            console.log(state);
+        });
     });
 }
 // displayTopicsInfo();
 
+
+// Here is where buttons will be created and added
 function renderButtons() {
     $('#button-topics').empty();
 
@@ -74,11 +95,12 @@ $('#add-topics').on('click', function(event) {
     event.preventDefault();
 
     var topics_input = $('#topics-input').val().trim();
-    // topics_input.val('');
 
     topics.push(topics_input);
     console.log(topics);
 
-    renderButtons();
+    // $('.gif').empty();
+    // console.log(inputDiv)
 
+    renderButtons();
 });
