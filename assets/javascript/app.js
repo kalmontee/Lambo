@@ -10,6 +10,9 @@ function displayTopicsInfo() {
     var APIKey = "IcqtslR9hjOS6kk8EC1CldDCskqZoWYT";
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + name + "&api_key=" + APIKey + "&limit=10";
 
+    // Each time user presses a button we want to empty out the previous gif imgs 
+    $('#topics-view').empty();
+
     $.ajax({
         url: queryURL,
         method: "GET"
