@@ -3,9 +3,6 @@ var topics = ['Animals', 'Celebrities', 'Minions', 'Movies', "Athletes", "Laugh"
 // Don't touch this
 $(document).on('click', '.topics', displayTopicsInfo);
 
-// Touch this
-// $(document).on('click', '.topics', removeTopics);
-
 renderButtons();
 
 function displayTopicsInfo() {
@@ -97,26 +94,30 @@ function renderButtons() {
 
         // display the buttons topics
         button.text(topics[i]);
-        $('#button-topics').append(button);
 
-        var icon = $("<a><i class='fas fa-trash-alt'></i></a>");
+        var icon = $("<i>");
 
-        icon.addClass('icon');
+        icon.addClass('fas fa-trash-alt icon');
 
-        icon.attr("data-type", topics[i]);
+        icon.attr("data-type", i);
 
-        $('#button-topics').append(icon);
-
+        $('#button-topics').append(button, icon);
     }
 
-    // $(icon).on('click', function() {
-    //     $('.topics').remove()
-    //         // $("data-type", button).remove();
-    //         // $('.icon').remove();
-
-    //     console.log("it works");
-    // })
+    localStorage.setItem("gifs", JSON.stringify(topics));
 }
+
+// When a user clicks a check box then delete the specific content
+$(document).on('click', '.icon', function() {
+    var deleteTopic = $(this).attr("data-type");
+
+    topics.splice(deleteTopic, 1);
+
+    // call the renderButtons to show the buttons have been removed
+    renderButtons();
+
+    localStorage.setItem("gifs", JSON.stringify(topics));
+});
 
 $('#add-topics').on('click', function(event) {
     event.preventDefault();
@@ -129,5 +130,14 @@ $('#add-topics').on('click', function(event) {
     // Push whatever topic to topic inputs. Will be set as a button
     topics.push(topics_input);
 
+    // localStorage.clear();
+
+    // localStorage.setItem("topics-input", topics_input);
+
+    // $("#add-topics").text(localStorage.getItem("topics-input"));
+
+    localStorage.setItem("gifs", JSON.stringify(topics));
     renderButtons();
 });
+
+// $("#add-topics").text(localStorage.getItem("topics-input"));
