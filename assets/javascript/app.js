@@ -9,7 +9,7 @@ function displayTopicsInfo() {
 
     var name = $(this).attr("data-type");
     var APIKey = "IcqtslR9hjOS6kk8EC1CldDCskqZoWYT";
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + name + "&api_key=" + APIKey + "&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + name + "&api_key=" + APIKey + "&limit=20";
 
     // Each time user clicks a different button we want to empty out the previous gif imgs 
     $('#topics-view').empty();
@@ -22,7 +22,7 @@ function displayTopicsInfo() {
         // Testing purposes only
         console.log(queryURL);
         console.log(response);
-        $('#topics-view').text(JSON.stringify(Response));
+        // $('#topics-view').text(JSON.stringify(Response));
 
         var results = response.data;
 
@@ -76,6 +76,7 @@ function displayTopicsInfo() {
             }
         });
     });
+    localStorage.setItem("add-items", JSON.stringify(topics));
 }
 
 // Here is where buttons will be created and added
@@ -103,8 +104,7 @@ function renderButtons() {
 
         $('#button-topics').append(button, icon);
     }
-
-    localStorage.setItem("gifs", JSON.stringify(topics));
+    localStorage.setItem("add-items", JSON.stringify(topics));
 }
 
 // When a user clicks a check box then delete the specific content
@@ -116,7 +116,7 @@ $(document).on('click', '.icon', function() {
     // call the renderButtons to show the buttons have been removed
     renderButtons();
 
-    localStorage.setItem("gifs", JSON.stringify(topics));
+    localStorage.setItem("add-items", JSON.stringify(topics));
 });
 
 $('#add-topics').on('click', function(event) {
@@ -127,17 +127,26 @@ $('#add-topics').on('click', function(event) {
     // This will clear the previous input text field
     $("#topics-input").val('');
 
+    if (topics_input === '') {
+        alert("Cannot submit empty text");
+        return false;
+    }
+
     // Push whatever topic to topic inputs. Will be set as a button
     topics.push(topics_input);
 
     // localStorage.clear();
 
-    // localStorage.setItem("topics-input", topics_input);
+    localStorage.setItem("add-items", JSON.stringify(topics));
 
-    // $("#add-topics").text(localStorage.getItem("topics-input"));
-
-    localStorage.setItem("gifs", JSON.stringify(topics));
     renderButtons();
 });
 
-// $("#add-topics").text(localStorage.getItem("topics-input"));
+// Load the gifs from localStorage
+// var user = JSON.parse(localStorage.getItem('add-items'));
+
+$('#add-topics').text(JSON.parse(localStorage.getItem('add-items')));
+
+// if (!Array.isArray(user)) {
+//     user = [];
+// }
