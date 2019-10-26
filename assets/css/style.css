@@ -4,6 +4,7 @@ body {
     /* background-image: url(../images/background.gif);
     background-size: cover; */
     /* background-position: left; */
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 aside {
@@ -43,16 +44,17 @@ input {
 }
 
 #topics-input {
-    font-size: 18px;
+    font-size: 20px;
 }
 
 #add-topics {
     border: none;
     color: #0F2027;
     padding: 10px 10px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     background-color: rgb(247, 215, 36);
+    font-family: 'Quicksand', sans-serif;
 }
 
 #add-topics:hover {
@@ -67,7 +69,7 @@ button {
     border: none;
     color: #0F2027;
     padding: 10px 10px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     background-color: rgb(247, 215, 36);
     margin: 5px 10px;
@@ -100,12 +102,6 @@ p {
     text-align: center;
 }
 
-
-/* #topics-view {
-    margin: 10px;
-    /* width: 70%;
-} */
-
 .inputDiv {
     /* width: 30%; */
     float: left;
@@ -113,6 +109,163 @@ p {
 
 .inputDiv img {
     margin: 10px;
-    /* width: 90%; */
     height: 230px;
+}
+
+
+/* responsive */
+
+@media only screen and (max-width: 980px) {
+    .inputDiv img {
+        /* height: 100px; */
+        width: auto;
+        height: 300px;
+    }
+    button {
+        padding: 15px 15px;
+        font-size: 22px;
+    }
+    #add-topics {
+        padding: 15px 15px;
+        font-size: 22px;
+    }
+    input {
+        padding: 10px;
+    }
+    label {
+        font-size: 30px;
+    }
+    p {
+        font-size: 30px;
+    }
+    .icon {
+        opacity: 1;
+        color: #c9c9c9;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    button {
+        padding: 10px 10px;
+        font-size: 20px;
+    }
+    aside {
+        width: 50%;
+    }
+    article {
+        flex-flow: row;
+    }
+    form {
+        width: none;
+    }
+    input {
+        padding: 5px;
+    }
+    label {
+        font-size: 25px;
+    }
+    #topics-view {
+        width: 50%;
+    }
+    .inputDiv img {
+        height: 300px;
+        width: auto;
+    }
+    .icon {
+        opacity: 1;
+        color: #c9c9c9;
+    }
+    p {
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    aside {
+        width: 80%;
+        position: relative;
+        margin-top: 40px;
+        justify-content: flex-start;
+    }
+    form {
+        position: absolute;
+        top: -122px;
+        right: 65px;
+        width: 100%;
+    }
+    .icon {
+        padding: 0;
+    }
+    #button-topics {
+        justify-content: space-between;
+    }
+    #topics-input {
+        font-size: 18px;
+    }
+    input {
+        padding: none;
+    }
+    label {
+        font-size: 20px;
+    }
+    #add-topics {
+        padding: 10px 10px;
+        font-size: 15px;
+    }
+    #topics-view {
+        margin-top: 200px;
+        justify-content: center;
+    }
+    .inputDiv img {
+        height: 200px;
+        width: 347px;
+    }
+    .icon {
+        opacity: 1;
+        color: #c9c9c9;
+    }
+    p {
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .inputDiv img {
+        height: 200px;
+        width: 300px;
+    }
+    p {
+        font-size: 20px;
+    }
+    #button-topics {
+        margin-bottom: 100px;
+    }
+    button {
+        font-size: 17px;
+    }
+    #topics-input {
+        font-size: 18px;
+    }
+    input {
+        padding: none;
+    }
+    label {
+        font-size: 17px;
+    }
+    aside {
+        width: 80%;
+        position: relative;
+        justify-content: center;
+        /* justify-content: flex-start; */
+    }
+    form {
+        position: absolute;
+        top: -122px;
+        right: 65px;
+        width: 100%;
+    }
+    #add-topics {
+        padding: 10px 10px;
+        font-size: 15px;
+    }
 }
