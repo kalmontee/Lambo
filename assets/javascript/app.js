@@ -3,8 +3,6 @@ var topics = ['Animals', 'Celebrities', 'Minions', 'Movies', "Athletes", "Laugh"
 // Don't touch this
 $(document).on('click', '.topics', displayTopicsInfo);
 
-renderButtons();
-
 function displayTopicsInfo() {
 
     var name = $(this).attr("data-type");
@@ -22,7 +20,7 @@ function displayTopicsInfo() {
         // Testing purposes only
         console.log(queryURL);
         console.log(response);
-        // $('#topics-view').text(JSON.stringify(Response));
+        $('#topics-view').text(JSON.stringify(Response));
 
         var results = response.data;
 
@@ -76,11 +74,10 @@ function displayTopicsInfo() {
             }
         });
     });
-    localStorage.setItem("add-items", JSON.stringify(topics));
 }
 
 // Here is where buttons will be created and added
-function renderButtons() {
+function renderButtons(topics) {
     $('#button-topics').empty();
 
     for (var i = 0; i < topics.length; i++) {
@@ -104,19 +101,19 @@ function renderButtons() {
 
         $('#button-topics').append(button, icon);
     }
-    localStorage.setItem("add-items", JSON.stringify(topics));
 }
 
-// When a user clicks a check box then delete the specific content
+// When a user clicks an icon then delete the specific content
 $(document).on('click', '.icon', function() {
     var deleteTopic = $(this).attr("data-type");
 
+    // removes the element selected .splice(index, value)
     topics.splice(deleteTopic, 1);
 
     // call the renderButtons to show the buttons have been removed
-    renderButtons();
+    renderButtons(topics);
 
-    localStorage.setItem("add-items", JSON.stringify(topics));
+    localStorage.setItem("items", JSON.stringify(topics));
 });
 
 $('#add-topics').on('click', function(event) {
@@ -127,26 +124,26 @@ $('#add-topics').on('click', function(event) {
     // This will clear the previous input text field
     $("#topics-input").val('');
 
+    // Prevents users submit empty text field.
     if (topics_input === '') {
         alert("Cannot submit empty text");
         return false;
     }
 
-    // Push whatever topic to topic inputs. Will be set as a button
+    // Push any topic to inputs. Will be set as a button
     topics.push(topics_input);
 
-    // localStorage.clear();
+    localStorage.setItem("items", JSON.stringify(topics));
 
-    localStorage.setItem("add-items", JSON.stringify(topics));
-
-    renderButtons();
+    renderButtons(topics);
 });
 
 // Load the gifs from localStorage
-// var user = JSON.parse(localStorage.getItem('add-items'));
+var items = JSON.parse(localStorage.getItem('items'));
+console.log(items);
 
-$('#add-topics').text(JSON.parse(localStorage.getItem('add-items')));
+if (!Array.isArray(items)) {
+    items = [];
+}
 
-// if (!Array.isArray(user)) {
-//     user = [];
-// }
+renderButtons(items);
