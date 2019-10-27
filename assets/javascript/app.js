@@ -1,5 +1,13 @@
-var topics = ['Animals', 'Celebrities', 'Minions', 'Movies', "Athletes", "Laugh"];
-
+var topics = [
+    'Animals',
+    'Celebrities',
+    'Minions',
+    'Movies',
+    "Athletes",
+    "Sports",
+    "Comedians",
+    "Laugh"
+];
 // Don't touch this
 $(document).on('click', '.topics', displayTopicsInfo);
 
@@ -7,7 +15,7 @@ function displayTopicsInfo() {
 
     var name = $(this).attr("data-type");
     var APIKey = "IcqtslR9hjOS6kk8EC1CldDCskqZoWYT";
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + name + "&api_key=" + APIKey + "&limit=20";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + name + "&api_key=" + APIKey + "&limit=10";
 
     // Each time user clicks a different button we want to empty out the previous gif imgs 
     $('#topics-view').empty();
@@ -77,7 +85,7 @@ function displayTopicsInfo() {
 }
 
 // Here is where buttons will be created and added
-function renderButtons(topics) {
+function renderButtons() {
     $('#button-topics').empty();
 
     for (var i = 0; i < topics.length; i++) {
@@ -139,11 +147,11 @@ $('#add-topics').on('click', function(event) {
 });
 
 // Load the gifs from localStorage
-var items = JSON.parse(localStorage.getItem('items'));
-console.log(items);
+// var items = JSON.parse(localStorage.getItem('items'));
+// console.log(items);
 
-if (!Array.isArray(items)) {
-    items = [];
-}
+// if (!Array.isArray(items)) {
+//     items = [];
+// }
 
-renderButtons(items);
+renderButtons();
