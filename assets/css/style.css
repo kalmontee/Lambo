@@ -9,13 +9,11 @@ body {
 
 aside {
     float: right;
-    height: 50%;
 }
 
 article {
     display: flex;
     justify-content: space-between;
-    /* width: 100%; */
 }
 
 h1 {
@@ -36,11 +34,11 @@ form {
 label {
     color: #fff;
     font-size: 23px;
+    margin: 10px;
 }
 
 input {
     margin: 10px;
-    /* padding: 5px; */
 }
 
 #topics-input {
@@ -61,7 +59,7 @@ input {
     background-color: rgb(67, 207, 24);
 }
 
-#button-topics {
+div#button-topics {
     margin-bottom: 3em;
 }
 
@@ -103,7 +101,6 @@ p {
 }
 
 .inputDiv {
-    /* width: 30%; */
     float: left;
 }
 
